@@ -14,17 +14,17 @@
         body {
             font-family: 'Georgia', serif;
             /* Floral background with indigo/pink/white roses */
-            background-image: url('https://images.unsplash.com/photo-1544607886-f40b2a7585f9?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Unsplash image with appropriate colors */
+            background-image: url('https://images.unsplash.com/photo-1544607886-f40b2a7585f9?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Keeps background fixed during scroll */
+            background-attachment: fixed;
             min-height: 100vh;
             padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative; /* Needed for pseudo-element overlay */
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            position: relative;
+            overflow-x: hidden;
         }
 
         /* Overlay to improve readability over the background image */
@@ -36,7 +36,7 @@
             width: 100%;
             height: 100%;
             background: rgba(255, 255, 255, 0.6); /* Semi-transparent white overlay */
-            z-index: -1; /* Place behind content */
+            z-index: -1;
         }
 
         .container {
@@ -47,7 +47,7 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             overflow: hidden;
             animation: fadeIn 0.8s ease-out;
-            z-index: 1; /* Ensure container is above the overlay */
+            z-index: 1;
         }
 
         @keyframes fadeIn {
@@ -62,7 +62,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #fce4ec 0%, #ffe0f0 100%); /* Lighter rose pink header */
+            background: linear-gradient(135deg, #fce4ec 0%, #ffe0f0 100%);
             color: #4a4a4a;
             padding: 50px 30px;
             text-align: center;
@@ -121,6 +121,17 @@
             color: #555;
         }
 
+        /* Styling for the icons within detail-item */
+        .detail-item strong::before {
+            margin-right: 8px;
+            content: '';
+        }
+
+        .detail-item:nth-child(2) strong::before { content: '🗓️'; } /* Date */
+        .detail-item:nth-child(3) strong::before { content: '🕒'; } /* Time */
+        .detail-item:nth-child(4) strong::before { content: '📍'; } /* Venue */
+        .detail-item:nth-child(5) strong::before { content: '👔'; } /* Dress Code */
+        
         .form-group {
             margin-bottom: 20px;
         }
@@ -325,7 +336,7 @@
                 <div class="event-details">
                     <h2>Event Details</h2>
                     <div class="detail-item">
-                        <strong>Date:</strong>
+                        <strong>Date:</strong> 
                         <span>26 February 2026</span>
                     </div>
                     <div class="detail-item">
