@@ -269,59 +269,7 @@
                 <p>We've received your response and can't wait to see you!</p>
             </div>
         </div>
-    </div>
-
-    <script>
-    const form = document.getElementById('rsvpForm');
-    const successMessage = document.getElementById('successMessage');
-    
-    // Your Google Apps Script URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxEYwRGh3vZ7Fk1v0ongIHi1DeAyOQrkdjMY_pA0uSsALOiBeLtO1H4SWvCJIQP0qgD/exec';
-
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const submitButton = form.querySelector('button[type="submit"]');
-        submitButton.textContent = 'Submitting...';
-        submitButton.disabled = true;
-        
-        const formData = new FormData(form);
-        
-        // Create URL-encoded data instead of JSON
-        const params = new URLSearchParams();
-        params.append('name', formData.get('name'));
-        params.append('email', formData.get('email'));
-        params.append('phone', formData.get('phone') || '');
-        params.append('attending', formData.get('attending'));
-        params.append('guests', formData.get('guests'));
-        
-        // Send as POST with form data
-        fetch(SCRIPT_URL, {
-            method: 'POST',
-            body: params
-        })
-        .then(response => {
-            console.log('Response received');
-            form.style.display = 'none';
-            successMessage.classList.add('show');
-            
-            setTimeout(() => {
-                form.reset();
-                form.style.display = 'block';
-                successMessage.classList.remove('show');
-                submitButton.textContent = 'Submit RSVP';
-                submitButton.disabled = false;
-            }, 5000);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('There was an error submitting your RSVP. Please try again.');
-            submitButton.textContent = 'Submit RSVP';
-            submitButton.disabled = false;
-        });
-    });
-</script>
-    
+    </div>   
 <script>
     const form = document.getElementById('rsvpForm');
     const successMessage = document.getElementById('successMessage');
