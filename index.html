@@ -91,19 +91,18 @@
         }
         
         #landingPage h2 {
-            font-family: 'Playfair Display', serif; /* Elegant font for readability */
-            font-size: 2.5em;
+            /* Applied elegant font: Playfair Display */
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.8em; /* Slightly increased size for prominence */
             color: #d81b60; /* Pink theme color */
             margin-bottom: 20px;
             letter-spacing: 1px;
+            font-weight: 700;
         }
 
         #landingPage p {
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.1em;
-            color: #333;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            /* This section is removed from HTML, but keeping style here for safety/re-use */
+            display: none; 
         }
         
         /* Wax Seal Button Style */
@@ -152,22 +151,21 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* CHANGED: Main Invitation Heading Color and Font Update (More visible/elegant) */
+        /* CHANGED: Invitation line is now smaller and background is removed */
         .header h1 {
-            font-family: 'Playfair Display', serif; 
-            font-size: 2.5em; 
+            font-family: 'Alex Brush', cursive; /* Using script font for consistent elegance */
+            font-size: 2.2em; /* Made smaller */
             margin-bottom: 15px;
-            font-weight: 900; 
+            font-weight: 400; /* Lighter weight for elegance */
             letter-spacing: 1px;
-            color: #7a001f; /* Deep Maroon/Burgundy for readability and contrast */
-            text-shadow: 1px 1px 1px rgba(255,255,255,0.7); 
+            color: white; /* Changed to white to match the solemnization line */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4); /* Kept shadow for visibility */
             line-height: 1.2;
-            padding: 5px;
-            background-color: rgba(255, 255, 255, 0.7); /* Light background for contrast */
-            border-radius: 8px;
+            padding: 0; /* Removed padding */
+            background-color: transparent; /* Removed background color */
+            border-radius: 0; /* Removed border radius */
         }
 
-        /* CHANGED: Solemnization Names now positioned above H1 in HTML/CSS */
         .header .solemnization-names {
             font-family: 'Alex Brush', cursive; 
             font-size: 2em; 
@@ -182,7 +180,7 @@
             padding: 40px 30px;
         }
         
-        /* CHANGED: 3D look to the form section container */
+        /* 3D look to the form section container */
         #formSection {
             background-color: #f7f7f7; 
             padding: 20px;
@@ -197,8 +195,7 @@
         
         .event-details {
             background: #ffffff;
-            /* CHANGED: Event Details border changed to Rose Pink */
-            border-left: 5px solid #e91e63; 
+            border-left: 5px solid #e91e63; /* Rose Pink border */
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 30px;
@@ -227,7 +224,6 @@
             flex-wrap: wrap;
         }
 
-        /* Abraham Lincoln Bolding & Quote Style */
         .detail-item strong {
             min-width: 90px;
             color: #555;
@@ -243,8 +239,6 @@
             flex-grow: 1;
         }
 
-
-        /* Styling for the icons within detail-item */
         .detail-item strong::before {
             margin-right: 8px;
             content: '';
@@ -456,8 +450,7 @@
         <div id="landingPage">
             <div class="letter-container">
                 <h2>A Special Delivery</h2>
-                <p>An elegant invitation awaits you. Please **break the seal** to reveal the details for Carrie and Chun Wei's wedding solemnization.</p>
-            </div>
+                </div>
             <button id="revealButton">Open Letter</button>
         </div>
 
