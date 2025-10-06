@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>You're Invited!</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -12,9 +15,8 @@
         }
 
         body {
-            /* UPDATED: Changed font to an elegant serif stack */
+            /* Fallback font for the main body text */
             font-family: 'Times New Roman', Times, serif; 
-            /* UPDATED: Sakura background image URL and comment */
             background-image: url('https://wallpapers.com/images/hd/romantic-sakura-tree-pathway-ef9wtrc3634biz0h.webp');
             background-size: cover;
             background-position: center;
@@ -36,7 +38,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* ADJUSTED: Transparency from 0.6 to 0.4 to make the background more visible */
             background: rgba(255, 255, 255, 0.4); 
             z-index: -1;
         }
@@ -63,7 +64,7 @@
             }
         }
         
-        /* NEW STYLES for Landing Page */
+        /* NEW FONT: Playfair Display for Landing Page Title */
         #landingPage {
             padding: 50px 30px;
             text-align: center;
@@ -71,7 +72,7 @@
         }
 
         #landingPage h2 {
-            font-family: 'Georgia', serif; /* Use a script/display font for the focal point */
+            font-family: 'Playfair Display', serif; /* Captures the 'Wanderlust' feel */
             font-size: 3em;
             color: #d81b60;
             margin-bottom: 20px;
@@ -108,26 +109,27 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* UPDATED: Change h1 color to white */
+        /* NEW FONT: Alex Brush for Main Invitation Heading */
         .header h1 {
-            font-size: 2.5em;
+            font-family: 'Alex Brush', cursive; 
+            font-size: 3em;
             margin-bottom: 10px;
-            font-weight: 300;
+            font-weight: 400; /* Alex Brush is only one weight, 400 */
             letter-spacing: 2px;
-            color: #ffffff; /* White color for visibility on light pink gradient */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1); /* Slight shadow for readability */
+            color: #d81b60; /* Changed to pink for a script font to stand out */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            line-height: 1.2;
         }
 
-        /* NEW STYLE: For the solemnization names/tagline */
+        /* NEW FONT: Alex Brush for Solemnization Names */
         .header .solemnization-names {
-            /* UPDATED: Change p color to white and increase font size to 1.3em */
-            font-size: 1.3em; 
-            opacity: 1.0;
-            color: #ffffff; /* White color for visibility */
-            font-weight: 500;
+            font-family: 'Alex Brush', cursive; 
+            font-size: 1.8em; 
+            color: #d81b60;
+            font-weight: 400;
             margin-top: 5px;
             margin-bottom: 0;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1); /* Slight shadow for readability */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1); 
         }
         
         .content {
@@ -147,6 +149,8 @@
             color: #d81b60;
             margin-bottom: 15px;
             font-size: 1.3em;
+            /* Using a readable serif for subheadings */
+            font-family: 'Times New Roman', Times, serif; 
         }
 
         .detail-item {
@@ -180,6 +184,8 @@
             margin-bottom: 8px;
             color: #333;
             font-weight: 600;
+            /* Ensure form labels are very legible */
+            font-family: 'Times New Roman', Times, serif; 
         }
 
         input, select, textarea {
@@ -281,11 +287,13 @@
             opacity: 0.95;
         }
 
+        /* NEW FONT: Alex Brush for Countdown Title */
         .countdown-title {
+            font-family: 'Alex Brush', cursive; 
             color: #d81b60;
-            font-size: 1.5em;
+            font-size: 2.5em;
             margin-bottom: 20px;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 1px;
         }
 
@@ -310,6 +318,8 @@
             color: #d81b60;
             display: block;
             margin-bottom: 5px;
+            /* Use a legible font for the numbers */
+            font-family: 'Playfair Display', serif; 
         }
 
         .time-label {
@@ -317,6 +327,7 @@
             color: #888;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-family: 'Times New Roman', Times, serif; 
         }
 
         .hearts-decoration {
@@ -349,6 +360,7 @@
         .event-reminder h3 {
             color: #d81b60;
             margin-bottom: 10px;
+            font-family: 'Times New Roman', Times, serif; 
         }
 
         .event-reminder p {
@@ -378,8 +390,8 @@
 
         <div class="header" style="display:none;">
             <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400" alt="Event" class="header-image">
-            <h1> You're Invited to share this special day with us!</h1>
-            <p class="solemnization-names"> Solemnization for Carrie and Chun Wei </p> 
+            <h1 class="solemnization-names">Solemnization for Carrie and Chun Wei</h1>
+            <p>You're Invited to share this special day with us!</p> 
         </div>
         
         <div class="content">
@@ -500,17 +512,17 @@
         const header = document.querySelector('.header');
         const revealButton = document.getElementById('revealButton');
 
+        // IMPORTANT: Update this URL with your actual Google Apps Script URL
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQXlnY9IlcBq9dZdot5YwV5vm_L8p_H-PGuw7VGANPIA_SDv1WKG-IpbX7NiwWF-n0/exec';
 
         // Countdown target date: February 26, 2026, 15:00
         const targetDate = new Date('2026-02-26T15:00:00').getTime();
 
-        // NEW: Event listener for the reveal button
+        // Event listener for the reveal button
         revealButton.addEventListener('click', () => {
             landingPage.style.display = 'none';
             header.style.display = 'block';
             formSection.style.display = 'block';
-            // Optional: Scroll to the top of the invitation
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
