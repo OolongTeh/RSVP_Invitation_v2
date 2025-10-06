@@ -30,7 +30,7 @@
             overflow-x: hidden;
         }
 
-        /* Overlay to improve readability over the background image */
+        /* Overlay to improve readability over the background image (Light Sakura Theme) */
         body::before {
             content: '';
             position: absolute;
@@ -64,35 +64,79 @@
             }
         }
         
+        /* --- LANDING PAGE (VINTAGE LETTER) STYLES --- */
+
         #landingPage {
+            position: relative;
             padding: 50px 30px;
             text-align: center;
-            background: #ffffff;
+            background: #fdfaf7; /* Off-white paper background */
+            transition: opacity 1.5s ease-out;
         }
 
+        .letter-container {
+            border: 2px solid #ffccdd; /* Soft pink border for sakura theme */
+            padding: 40px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            transform: scale(1);
+        }
+
+        /* Animation for the opening effect */
+        .letter-container.animate-open {
+            transform: scale(1.05);
+            opacity: 0;
+        }
+        
         #landingPage h2 {
-            font-family: 'Playfair Display', serif; 
-            font-size: 3em;
-            color: #d81b60;
+            font-family: 'Playfair Display', serif; /* Elegant font for readability */
+            font-size: 2.5em;
+            color: #d81b60; /* Pink theme color */
             margin-bottom: 20px;
-            letter-spacing: 2px;
-            animation: bounceIn 1s ease-out;
+            letter-spacing: 1px;
         }
 
         #landingPage p {
+            font-family: 'Libre Baskerville', serif;
             font-size: 1.1em;
-            color: #555;
+            color: #333;
             margin-bottom: 30px;
+            line-height: 1.6;
         }
         
-        @keyframes bounceIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            70% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); }
+        /* Wax Seal Button Style */
+        #revealButton {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #e91e63, #d81b60); /* Deep Pink wax color */
+            color: white;
+            border: 3px solid #ffebcd; /* Light gold edge */
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+            position: absolute;
+            bottom: -50px; 
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
         }
 
+        #revealButton:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* --- MAIN INVITATION HEADER STYLES --- */
+
         .header {
-            background: linear-gradient(135deg, #fce4ec 0%, #ffe0f0 100%);
+            background: linear-gradient(135deg, #f06292 0%, #ec407a 100%);
             color: #4a4a4a;
             padding: 50px 30px;
             text-align: center;
@@ -108,56 +152,71 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* CHANGE 1: Main Invitation Heading Color and Boldness */
+        /* CHANGED: Main Invitation Heading Color and Font Update (More visible/elegant) */
         .header h1 {
-            font-family: 'Alex Brush', cursive; 
-            font-size: 3em;
-            margin-bottom: 10px;
-            font-weight: 700; /* Made text bold */
-            letter-spacing: 2px;
-            color: white; /* Changed color to white */
-            text-shadow: 0 0 10px rgba(0,0,0,0.3); /* Stronger shadow for white text */
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.5em; 
+            margin-bottom: 15px;
+            font-weight: 900; 
+            letter-spacing: 1px;
+            color: #7a001f; /* Deep Maroon/Burgundy for readability and contrast */
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.7); 
             line-height: 1.2;
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.7); /* Light background for contrast */
+            border-radius: 8px;
         }
 
+        /* CHANGED: Solemnization Names now positioned above H1 in HTML/CSS */
         .header .solemnization-names {
             font-family: 'Alex Brush', cursive; 
-            font-size: 1.8em; 
-            color: #d81b60;
+            font-size: 2em; 
+            color: white; 
             font-weight: 400;
             margin-top: 5px;
-            margin-bottom: 0;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1); 
+            margin-bottom: 10px; 
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4); 
         }
         
         .content {
             padding: 40px 30px;
         }
         
-        /* CHANGE 2: Styling for the Quote/Abraham Lincoln Style Event Details */
+        /* CHANGED: 3D look to the form section container */
+        #formSection {
+            background-color: #f7f7f7; 
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.1), 
+                0 1px 3px rgba(0, 0, 0, 0.08), 
+                inset 0 1px 3px rgba(255, 255, 255, 0.5), 
+                inset 0 -1px 3px rgba(0, 0, 0, 0.1); 
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        
         .event-details {
             background: #ffffff;
-            /* Added a strong left border for a "quote" look */
-            border-left: 5px solid #a0522d; /* Saddle Brown color for old-world feel */
+            /* CHANGED: Event Details border changed to Rose Pink */
+            border-left: 5px solid #e91e63; 
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            /* Set the base font for the entire details box to Libre Baskerville */
             font-family: 'Libre Baskerville', serif; 
             font-size: 1.1em;
             line-height: 1.8;
-            font-style: italic; /* A common style for quotes/important text */
+            font-style: italic; 
         }
 
         .event-details h2 {
-            color: #a0522d; /* Matching header color */
+            color: #e91e63; 
             margin-bottom: 20px;
             font-size: 1.5em;
             font-style: normal;
             font-weight: 700;
             text-align: center;
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid #f0f0f0;
             padding-bottom: 10px;
         }
 
@@ -168,17 +227,16 @@
             flex-wrap: wrap;
         }
 
-        /* CHANGE 3: Apply Bold and normal font-style to the labels */
+        /* Abraham Lincoln Bolding & Quote Style */
         .detail-item strong {
             min-width: 90px;
             color: #555;
-            font-weight: bold; /* Made label bold */
-            font-style: normal; /* Removed italics from label */
+            font-weight: bold; 
+            font-style: normal; 
             flex-shrink: 0;
         }
 
         .detail-item span {
-            /* The actual detail content */
             color: #333;
             font-weight: 400;
             font-style: italic;
@@ -192,10 +250,10 @@
             content: '';
         }
 
-        .detail-item:nth-child(2) strong::before { content: '🗓️'; } /* Date */
-        .detail-item:nth-child(3) strong::before { content: '🕒'; } /* Time */
-        .detail-item:nth-child(4) strong::before { content: '📍'; } /* Venue */
-        .detail-item:nth-child(5) strong::before { content: '👔'; } /* Dress Code */
+        .detail-item:nth-child(2) strong::before { content: '🗓️'; } 
+        .detail-item:nth-child(3) strong::before { content: '🕒'; } 
+        .detail-item:nth-child(4) strong::before { content: '📍'; } 
+        .detail-item:nth-child(5) strong::before { content: '👔'; } 
         
         .form-group {
             margin-bottom: 20px;
@@ -272,11 +330,6 @@
             transform: translateY(0);
         }
         
-        #revealButton {
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
         .countdown-section {
             display: none;
             text-align: center;
@@ -401,18 +454,22 @@
 <body>
     <div class="container">
         <div id="landingPage">
-            <h2>You've Got Mail!</h2>
-            <p>A very special invitation from Carrie and Chun Wei awaits you.</p>
-            <button id="revealButton" style="width: 50%;">Reveal Invitation</button>
+            <div class="letter-container">
+                <h2>A Special Delivery</h2>
+                <p>An elegant invitation awaits you. Please **break the seal** to reveal the details for Carrie and Chun Wei's wedding solemnization.</p>
+            </div>
+            <button id="revealButton">Open Letter</button>
         </div>
 
         <div class="header" style="display:none;">
             <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400" alt="Event" class="header-image">
-            <h1>You're Invited to share this special day with us!</h1>
+            
             <p class="solemnization-names">Solemnization for Carrie and Chun Wei</p> 
+            
+            <h1>You're Invited to share this special day with us!</h1>
         </div>
         
-        <div class="content">
+        <div class="content" style="opacity: 0; transition: opacity 1.5s ease-in;">
             <div id="formSection" style="display:none;">
                 <div class="event-details">
                     <h2>Event Details</h2>
@@ -433,6 +490,7 @@
                         <span> Formal/ Smart Casual/ Dress </span>
                     </div>
                 </div>
+
                 <form id="rsvpForm">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
@@ -526,7 +584,9 @@
         const formSection = document.getElementById('formSection');
         const countdownSection = document.getElementById('countdownSection');
         const landingPage = document.getElementById('landingPage');
+        const letterContainer = document.querySelector('.letter-container');
         const header = document.querySelector('.header');
+        const content = document.querySelector('.content');
         const revealButton = document.getElementById('revealButton');
 
         // IMPORTANT: Update this URL with your actual Google Apps Script URL
@@ -535,12 +595,23 @@
         // Countdown target date: February 26, 2026, 15:00
         const targetDate = new Date('2026-02-26T15:00:00').getTime();
 
-        // Event listener for the reveal button
+        // Event listener for the reveal button (Wax Seal)
         revealButton.addEventListener('click', () => {
-            landingPage.style.display = 'none';
-            header.style.display = 'block';
-            formSection.style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Start the letter opening animation
+            letterContainer.classList.add('animate-open');
+            revealButton.style.opacity = 0;
+
+            // Wait for the animation to complete before revealing the main content
+            setTimeout(() => {
+                landingPage.style.display = 'none';
+                header.style.display = 'block';
+                formSection.style.display = 'block';
+                
+                // Show the main content with a fade-in effect
+                content.style.opacity = 1;
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 500); // Matches the 0.5s CSS transition time
         });
 
         function updateCountdown() {
