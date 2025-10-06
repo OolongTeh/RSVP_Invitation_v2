@@ -13,12 +13,30 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: #f8f8f8; /* Changed to a very light, almost white background */
+            /* Floral background with indigo/pink/white roses */
+            background-image: url('https://images.unsplash.com/photo-1544607886-f40b2a7585f9?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Unsplash image with appropriate colors */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keeps background fixed during scroll */
             min-height: 100vh;
             padding: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative; /* Needed for pseudo-element overlay */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Overlay to improve readability over the background image */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.6); /* Semi-transparent white overlay */
+            z-index: -1; /* Place behind content */
         }
 
         .container {
@@ -26,9 +44,10 @@
             width: 100%;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* Softer shadow */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             overflow: hidden;
             animation: fadeIn 0.8s ease-out;
+            z-index: 1; /* Ensure container is above the overlay */
         }
 
         @keyframes fadeIn {
@@ -44,7 +63,7 @@
 
         .header {
             background: linear-gradient(135deg, #fce4ec 0%, #ffe0f0 100%); /* Lighter rose pink header */
-            color: #4a4a4a; /* Darker text for better contrast on light background */
+            color: #4a4a4a;
             padding: 50px 30px;
             text-align: center;
         }
@@ -56,7 +75,7 @@
             object-fit: cover;
             border: 5px solid white;
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Softer shadow for image */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .header h1 {
@@ -68,8 +87,8 @@
 
         .header p {
             font-size: 1.1em;
-            opacity: 0.8; /* Adjusted opacity */
-            color: #666; /* Adjusted color */
+            opacity: 0.8;
+            color: #666;
         }
 
         .content {
@@ -77,16 +96,16 @@
         }
 
         .event-details {
-            background: #ffffff; /* Keeping details section white */
-            border: 1px solid #f0f0f0; /* Subtle border */
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Very subtle shadow */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .event-details h2 {
-            color: #d81b60; /* A slightly deeper rose pink for headings */
+            color: #d81b60;
             margin-bottom: 15px;
             font-size: 1.3em;
         }
@@ -98,7 +117,7 @@
         }
 
         .detail-item strong {
-            min-width: 90px; /* Slightly wider to align well */
+            min-width: 90px;
             color: #555;
         }
 
@@ -116,7 +135,7 @@
         input, select, textarea {
             width: 100%;
             padding: 12px;
-            border: 1px solid #e0e0e0; /* Softer border */
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
             font-family: inherit;
@@ -125,8 +144,8 @@
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #d81b60; /* Rose pink focus border */
-            box-shadow: 0 0 0 3px rgba(216, 27, 96, 0.2); /* Rose pink shadow on focus */
+            border-color: #d81b60;
+            box-shadow: 0 0 0 3px rgba(216, 27, 96, 0.2);
         }
 
         textarea {
@@ -144,20 +163,20 @@
             display: flex;
             align-items: center;
             cursor: pointer;
-            color: #555; /* Text color for radio options */
+            color: #555;
         }
 
         .radio-option input[type="radio"] {
             width: auto;
             margin-right: 8px;
             cursor: pointer;
-            accent-color: #d81b60; /* Rose pink for radio button fill */
+            accent-color: #d81b60;
         }
 
         button {
             width: 100%;
             padding: 15px;
-            background: linear-gradient(135deg, #d81b60 0%, #ec407a 100%); /* Rose pink button gradient */
+            background: linear-gradient(135deg, #d81b60 0%, #ec407a 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -169,7 +188,7 @@
 
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(216, 27, 96, 0.4); /* Rose pink shadow on hover */
+            box-shadow: 0 10px 25px rgba(216, 27, 96, 0.4);
         }
 
         button:active {
@@ -187,12 +206,12 @@
         }
 
         .thank-you-message {
-            background: linear-gradient(135deg, #fce4ec 0%, #ffe0f0 100%); /* Lighter rose pink */
+            background: linear-gradient(135deg, #fce4ec 0%, #ffe0f0 100%);
             color: #4a4a4a;
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Subtle shadow */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .thank-you-message h2 {
@@ -207,7 +226,7 @@
         }
 
         .countdown-title {
-            color: #d81b60; /* Deeper rose pink */
+            color: #d81b60;
             font-size: 1.5em;
             margin-bottom: 20px;
             font-weight: 300;
@@ -222,17 +241,17 @@
         }
 
         .time-unit {
-            background: #ffffff; /* White background for time units */
-            border: 1px solid #fce4ec; /* Light rose pink border */
+            background: #ffffff;
+            border: 1px solid #fce4ec;
             border-radius: 15px;
             padding: 20px 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Subtle shadow */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .time-number {
             font-size: 2.5em;
             font-weight: bold;
-            color: #d81b60; /* Deeper rose pink for numbers */
+            color: #d81b60;
             display: block;
             margin-bottom: 5px;
         }
@@ -246,8 +265,8 @@
 
         .hearts-decoration {
             font-size: 2em;
-            color: #d81b60; /* Deeper rose pink for hearts */
-            opacity: 0.7; /* Slightly more opaque */
+            color: #d81b60;
+            opacity: 0.7;
             margin: 20px 0;
             animation: pulse 2s infinite;
         }
@@ -264,15 +283,15 @@
         }
 
         .event-reminder {
-            background: #ffffff; /* White background */
+            background: #ffffff;
             padding: 20px;
             border-radius: 10px;
-            border-left: 4px solid #d81b60; /* Rose pink border for emphasis */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Subtle shadow */
+            border-left: 4px solid #d81b60;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         .event-reminder h3 {
-            color: #d81b60; /* Deeper rose pink */
+            color: #d81b60;
             margin-bottom: 10px;
         }
 
