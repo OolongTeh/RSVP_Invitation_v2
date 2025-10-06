@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>You're Invited!</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -64,7 +64,6 @@
             }
         }
         
-        /* NEW FONT: Playfair Display for Landing Page Title */
         #landingPage {
             padding: 50px 30px;
             text-align: center;
@@ -72,7 +71,7 @@
         }
 
         #landingPage h2 {
-            font-family: 'Playfair Display', serif; /* Captures the 'Wanderlust' feel */
+            font-family: 'Playfair Display', serif; 
             font-size: 3em;
             color: #d81b60;
             margin-bottom: 20px;
@@ -109,19 +108,18 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        /* NEW FONT: Alex Brush for Main Invitation Heading */
+        /* CHANGE 1: Main Invitation Heading Color and Boldness */
         .header h1 {
             font-family: 'Alex Brush', cursive; 
             font-size: 3em;
             margin-bottom: 10px;
-            font-weight: 400; /* Alex Brush is only one weight, 400 */
+            font-weight: 700; /* Made text bold */
             letter-spacing: 2px;
-            color: #d81b60; /* Changed to pink for a script font to stand out */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            color: white; /* Changed color to white */
+            text-shadow: 0 0 10px rgba(0,0,0,0.3); /* Stronger shadow for white text */
             line-height: 1.2;
         }
 
-        /* NEW FONT: Alex Brush for Solemnization Names */
         .header .solemnization-names {
             font-family: 'Alex Brush', cursive; 
             font-size: 1.8em; 
@@ -135,34 +133,58 @@
         .content {
             padding: 40px 30px;
         }
-
+        
+        /* CHANGE 2: Styling for the Quote/Abraham Lincoln Style Event Details */
         .event-details {
             background: #ffffff;
-            border: 1px solid #f0f0f0;
+            /* Added a strong left border for a "quote" look */
+            border-left: 5px solid #a0522d; /* Saddle Brown color for old-world feel */
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            /* Set the base font for the entire details box to Libre Baskerville */
+            font-family: 'Libre Baskerville', serif; 
+            font-size: 1.1em;
+            line-height: 1.8;
+            font-style: italic; /* A common style for quotes/important text */
         }
 
         .event-details h2 {
-            color: #d81b60;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-            /* Using a readable serif for subheadings */
-            font-family: 'Times New Roman', Times, serif; 
+            color: #a0522d; /* Matching header color */
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            font-style: normal;
+            font-weight: 700;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
         }
 
         .detail-item {
             margin: 10px 0;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
         }
 
+        /* CHANGE 3: Apply Bold and normal font-style to the labels */
         .detail-item strong {
             min-width: 90px;
             color: #555;
+            font-weight: bold; /* Made label bold */
+            font-style: normal; /* Removed italics from label */
+            flex-shrink: 0;
         }
+
+        .detail-item span {
+            /* The actual detail content */
+            color: #333;
+            font-weight: 400;
+            font-style: italic;
+            flex-grow: 1;
+        }
+
 
         /* Styling for the icons within detail-item */
         .detail-item strong::before {
@@ -184,7 +206,6 @@
             margin-bottom: 8px;
             color: #333;
             font-weight: 600;
-            /* Ensure form labels are very legible */
             font-family: 'Times New Roman', Times, serif; 
         }
 
@@ -251,7 +272,6 @@
             transform: translateY(0);
         }
         
-        /* NEW: Styles for the "Reveal Invitation" button on the landing page */
         #revealButton {
             max-width: 300px;
             margin: 0 auto;
@@ -287,7 +307,6 @@
             opacity: 0.95;
         }
 
-        /* NEW FONT: Alex Brush for Countdown Title */
         .countdown-title {
             font-family: 'Alex Brush', cursive; 
             color: #d81b60;
@@ -318,7 +337,6 @@
             color: #d81b60;
             display: block;
             margin-bottom: 5px;
-            /* Use a legible font for the numbers */
             font-family: 'Playfair Display', serif; 
         }
 
@@ -390,8 +408,8 @@
 
         <div class="header" style="display:none;">
             <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400" alt="Event" class="header-image">
-            <h1 class="solemnization-names">Solemnization for Carrie and Chun Wei</h1>
-            <p>You're Invited to share this special day with us!</p> 
+            <h1>You're Invited to share this special day with us!</h1>
+            <p class="solemnization-names">Solemnization for Carrie and Chun Wei</p> 
         </div>
         
         <div class="content">
@@ -415,7 +433,6 @@
                         <span> Formal/ Smart Casual/ Dress </span>
                     </div>
                 </div>
-
                 <form id="rsvpForm">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
@@ -456,7 +473,7 @@
                         </select>
                     </div>
 
-                    <div class="detail-item" style="margin: 20px 0;">
+                    <div class="detail-item" style="margin: 20px 0; font-family: 'Times New Roman', Times, serif; font-style: normal; line-height: 1.5;">
                         <strong>For Your Information: </strong>
                         <span><a href="https://www.marriage.gov.sg/ROM_solemnisation_day_at_GBTB.pdf" target="_blank" style="color: #d81b60; text-decoration: underline;"> Please Read HERE </a></span>
                     </div>
