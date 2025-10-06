@@ -126,7 +126,7 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
-            font-family: 'Libre Baskerville', serif; /* Elegant font for button text */
+            font-family: 'Libre Baskerville', serif;
         }
 
         #revealButton:hover {
@@ -137,7 +137,6 @@
         /* --- MAIN INVITATION HEADER STYLES --- */
 
         .header {
-            /* Lighter pink gradient to match Sakura theme */
             background: linear-gradient(135deg, var(--sakura-pink-medium) 0%, var(--sakura-pink-deep) 100%);
             padding: 50px 30px;
             text-align: center;
@@ -153,8 +152,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .header h1, .header .solemnization-names {
+        .header .solemnization-names {
             font-family: 'Alex Brush', cursive; 
+            font-size: 2em;
             color: white; 
             font-weight: 400;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.4); 
@@ -163,13 +163,15 @@
             margin-bottom: 10px;
         }
 
-        .header .solemnization-names {
-            font-size: 2em; 
-        }
-
+        /* FIX: Changed font to Playfair Display for elegance and readability */
         .header h1 {
-            font-size: 2.2em; 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.8em; /* Slightly smaller than names, highly readable */
+            color: white; 
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4); 
             margin-bottom: 15px;
+            line-height: 1.2;
         }
         
         .content {
@@ -178,7 +180,7 @@
         
         /* Form Container Styling */
         #formSection {
-            background-color: var(--sakura-pink-light); /* Light pink background */
+            background-color: var(--sakura-pink-light);
             padding: 20px;
             border-radius: 15px;
             box-shadow: 
@@ -190,7 +192,7 @@
         
         .event-details {
             background: #ffffff;
-            border-left: 5px solid var(--sakura-pink-deep); /* Rose Pink border */
+            border-left: 5px solid var(--sakura-pink-deep);
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 30px;
@@ -203,39 +205,54 @@
 
         .event-details h2 {
             color: var(--sakura-pink-deep); 
-            font-family: 'Playfair Display', serif; /* Elegant font for heading */
+            font-family: 'Playfair Display', serif;
             font-style: normal;
         }
 
+        .detail-item {
+            margin: 10px 0;
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
         .detail-item strong {
+            min-width: 110px; /* Increased width to accommodate icon + text */
             color: #555;
             font-style: normal; 
+            flex-shrink: 0;
+            /* FIX: Ensure icon font is accessible */
+            font-family: 'Segoe UI Symbol', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif; 
         }
+
+        /* FIX: Reintroduced specific emoji icons */
+        .detail-item:nth-child(2) strong::before { content: '🗓️ '; } 
+        .detail-item:nth-child(3) strong::before { content: '🕒 '; } 
+        .detail-item:nth-child(4) strong::before { content: '📍 '; } 
+        .detail-item:nth-child(5) strong::before { content: '👔 '; } 
+
+        .detail-item span {
+            color: #333;
+            font-weight: 400;
+            font-style: italic;
+            flex-grow: 1;
+        }
+
 
         /* --- FORM STYLES (Elegant Fonts Applied) --- */
 
         label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 600;
-            font-family: 'Libre Baskerville', serif; /* Elegant font for labels */
+            font-family: 'Libre Baskerville', serif;
         }
 
         input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--sakura-pink-medium); /* Soft pink border */
-            border-radius: 8px;
-            font-size: 1em;
-            font-family: 'Libre Baskerville', serif; /* Elegant font for input text */
-            transition: border-color 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--sakura-pink-medium);
+            font-family: 'Libre Baskerville', serif;
         }
 
         input:focus, select:focus, textarea:focus {
-            outline: none;
             border-color: var(--sakura-pink-deep);
-            box-shadow: 0 0 0 3px var(--sakura-pink-medium); /* Soft pink focus shadow */
+            box-shadow: 0 0 0 3px var(--sakura-pink-medium);
         }
 
         .radio-option input[type="radio"] {
@@ -243,23 +260,12 @@
         }
 
         button {
-            width: 100%;
-            padding: 15px;
-            /* Sakura pink gradient for the submit button */
             background: linear-gradient(135deg, var(--sakura-pink-deep) 0%, #ec407a 100%);
-            color: white;
-            font-family: 'Libre Baskerville', serif; /* Elegant font for button text */
-            font-weight: 700;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: 'Libre Baskerville', serif;
         }
 
         button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4); /* Pink shadow on hover */
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
         }
 
         /* --- FINAL PAGE (COUNTDOWN) STYLES --- */
@@ -269,20 +275,16 @@
         }
 
         .thank-you-message {
-            /* Lighter pink gradient for thank you message */
             background: linear-gradient(135deg, var(--sakura-pink-light) 0%, #ffe0f0 100%);
-            color: #4a4a4a;
             font-family: 'Libre Baskerville', serif;
         }
 
         .countdown-title {
             font-family: 'Alex Brush', cursive; 
-            color: var(--sakura-pink-deep); /* Deep pink color */
-            font-size: 2.5em;
+            color: var(--sakura-pink-deep);
         }
 
         .time-unit {
-            background: #ffffff;
             border: 1px solid var(--sakura-pink-light);
         }
 
@@ -398,7 +400,7 @@
                 </form>
             </div>
 
-            <div id="countdownSection" class="countdown-section">
+            <div id="countdownSection" class="countdown-section" style="display: none;">
                 <div class="thank-you-message">
                     <h2>Thank You! </h2>
                     <p>We've received your RSVP and can't wait to share this day with you!</p>
@@ -515,10 +517,12 @@
                 body: params
             })
             .then(response => {
-                // Hide form and header, show countdown
+                // Hide form and header
                 header.style.display = 'none';
                 formSection.style.display = 'none';
-                countdownSection.classList.add('show');
+                
+                // Show countdown
+                countdownSection.style.display = 'block';
                 
                 // Start countdown timer
                 updateCountdown();
