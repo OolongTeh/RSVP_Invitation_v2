@@ -47,8 +47,8 @@
             background: rgba(255, 255, 255, 0.4); 
             z-index: -1;
         }
-
-        /* Floating petals animation */
+        
+       /* Floating petals animation */
         .petal {
             position: fixed;
             width: 15px;
@@ -59,6 +59,17 @@
             pointer-events: none;
             animation: fall linear infinite;
             z-index: 1000;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         .container {
