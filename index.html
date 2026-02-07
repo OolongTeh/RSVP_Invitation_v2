@@ -48,6 +48,19 @@
             z-index: -1;
         }
 
+        /* Floating petals animation */
+        .petal {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(ellipse at center, var(--sakura-pink-medium) 0%, var(--sakura-pink-light) 100%);
+            border-radius: 50% 0 50% 0;
+            opacity: 0.6;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1000;
+        }
+
         .container {
             max-width: 600px;
             width: 100%;
@@ -158,11 +171,11 @@
         #revealButton {
             width: 99px;
             height: 99px;
-            border-radius: 40%;
-            background: radial-gradient(circle at 26% 326%, var(--sakura-pink-deep) 0%, #d81b60 60%, var(--elegant-maroon) 80%);
+            border-radius: 50%;  /* ← CHANGE: was 40%, needs to be 50% for perfect circle */
+            background: radial-gradient(circle at 30% 30%, var(--sakura-pink-deep) 0%, #d81b60 60%, var(--elegant-maroon) 100%);  /* ← CHANGE: was "26% 326%" and "80%", needs to be "30% 30%" and "100%" */
             color: white;
             border: none;
-            font-size: 0.9em;
+            font-size: 0.75em;  /* ← CHANGE: was 0.9em, better at 0.75em for readability */
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -181,7 +194,6 @@
             opacity: 0;
             animation: sealFadeIn 1s ease-out forwards;
             animation-delay: 2.5s;
-
             /* Wax drips effect */
             clip-path: polygon(
                 50% 0%, 
@@ -197,14 +209,24 @@
                 20% 0%
             );
         }
-
+        
+        /* ← ADD THIS: Missing ::before pseudo-element for depth effect */
+        #revealButton::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, transparent 50%, rgba(0,0,0,0.2) 100%);
+        }
+        
         #revealButton::after {
             content: 'C & C';
             position: absolute;
             font-family: 'Playfair Display', serif;
             font-size: 2.2em;
             color: rgba(255,255,255,0.7);
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5), inset 0 0 5px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);  /* ← REMOVE: delete ", inset 0 0 5px rgba(0,0,0,0.3)" - inset is invalid here */
             mix-blend-mode: overlay;
             z-index: 4;
             pointer-events: none;
@@ -213,6 +235,11 @@
         #revealButton:hover {
             transform: translateX(-50%) scale(1.05);
             box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* ← ADD THIS: Missing :active state for click feedback */
+        #revealButton:active {
+            transform: translateX(-50%) scale(0.95);
         }
 
         @keyframes sealFadeIn {
