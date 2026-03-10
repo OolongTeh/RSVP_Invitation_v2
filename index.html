@@ -447,6 +447,23 @@
             text-align: center;
         }
 
+        .final-celebration-photo {
+            width: 250px; /* Adjust this to control how large the portrait is */
+            height: auto;
+            border-radius: 15px; /* Softer corners than the circle */
+            border: 5px solid white; /* Matches your header image style */
+            display: block;
+            margin: 30px auto; /* Centered, with space above and below */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Soft shadow for depth */
+            animation: fadeInPhoto 2s ease-in;
+        }
+        
+        /* Add a new, soft animation for this photo */
+        @keyframes fadeInPhoto {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         .thank-you-message {
             background: linear-gradient(135deg, var(--sakura-pink-light) 0%, #ffe0f0 100%);
             color: #4a4a4a;
@@ -621,6 +638,7 @@
                 <div class="thank-you-message">
                     <h2>Thank You! </h2>
                     <p>We've received your RSVP and can't wait to share this day with you!</p>
+                    <img src="https://github.com/OolongTeh/RSVP_Invitation_v2/blob/main/Image%20(4).jpg?raw=true" alt="Carrie and Chun Wei" class="final-celebration-photo">
                 </div>
 
                 <div class="hearts-decoration">♥ ♥ ♥</div>
