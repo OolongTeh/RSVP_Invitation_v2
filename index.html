@@ -272,7 +272,7 @@
             text-align: center;
         }
 
-        .header-image {
+        /* .header-image {
             width: 150px;
             height: 150px;
             border-radius: 50%;
@@ -280,6 +280,20 @@
             border: 5px solid white;
             margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        } */
+        
+        .header-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        /* 'cover' ensures the image fills the circle */
+        object-fit: cover;
+        /* 'center' keeps the middle of our new image (faces + ring) in focus */
+        object-position: center; 
+        border: 5px solid white;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        display: inline-block;
         }
 
         .header .solemnization-names {
@@ -524,7 +538,7 @@
 
         <div class="header" style="display:none;">
             <!-- <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400" alt="Event" class="header-image"> -->
-            <img src="https://github.com/OolongTeh/RSVP_Invitation_v2/blob/main/unnamed.jpg?raw=true" alt="Event" class="header-image">
+            <img src="https://github.com/OolongTeh/RSVP_Invitation_v2/blob/main/Gemini_Generated_Image_f3wnvcf3wnvcf3wn.png?raw=true" alt="Carrie & Chun Wei" class="header-image">
             
             <p class="solemnization-names">Solemnization for Carrie & Chun Wei</p> 
             
