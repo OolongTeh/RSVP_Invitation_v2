@@ -1,0 +1,795 @@
+<!-- /* Initial Code, to be decomissioned after the final list of guests are being confirmed*/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You're Invited!</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Define a consistent Sakura Pink palette for easier maintenance */
+        :root {
+            --sakura-pink-light: #fce4ec; /* Very light pink for backgrounds/accents */
+            --sakura-pink-medium: #ffb6c1; /* Soft pink for borders/focus */
+            --sakura-pink-deep: #e91e63; /* Deep rose pink for main accents/buttons */
+            --elegant-maroon: #7a001f; /* Deep color for high-contrast titles */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Libre Baskerville', serif; 
+            background-image: url('https://wallpapers.com/images/hd/romantic-sakura-tree-pathway-ef9wtrc3634biz0h.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.4); 
+            z-index: -1;
+        }
+        
+       /* Floating petals animation */
+        .petal {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(ellipse at center, var(--sakura-pink-medium) 0%, var(--sakura-pink-light) 100%);
+            border-radius: 50% 0 50% 0;
+            opacity: 0.6;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1000;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* --- LANDING PAGE (VINTAGE LETTER) STYLES --- */
+
+        #landingPage {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 50px 30px;
+            text-align: center;
+            background: #fdfaf7; 
+            transition: opacity 1.5s ease-out;
+            min-height: 400px;
+        }
+
+        .letter-container {
+            border: 2px solid var(--sakura-pink-medium); 
+            padding: 40px;
+            border-radius: 10px;
+            background: #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 450px;
+            opacity: 0;
+            animation: letterArrive 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+            z-index: 2;
+        }
+        
+        @keyframes letterArrive {
+            0% {
+                transform: translate(-50%, 100vh);
+                opacity: 0;
+                filter: blur(10px);
+            }
+            70% {
+                filter: blur(0px);
+            }
+            100% {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+                filter: blur(0px);
+            }
+        }
+
+        .letter-container.animate-open {
+            animation: letterOpen 0.8s ease-out forwards;
+        }
+
+        @keyframes letterOpen {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+                filter: blur(0);
+                z-index: 2;
+            }
+            50% {
+                transform: translate(-50%, -80%) scale(0.9) rotateZ(5deg);
+                opacity: 0.8;
+                filter: blur(2px);
+                z-index: 2;
+            }
+            100% {
+                transform: translate(-50%, -150%) scale(0.5) rotateZ(-10deg);
+                opacity: 0;
+                filter: blur(5px);
+                z-index: 2;
+            }
+        }
+        
+        #landingPage h2 {
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 2em; 
+            color: var(--sakura-pink-deep); 
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+        
+        /* --- Wax Seal Button Style --- */
+        #revealButton {
+            width: 99px;
+            height: 99px;
+            border-radius: 50%;  /* ← CHANGE: was 40%, needs to be 50% for perfect circle */
+            background: radial-gradient(circle at 30% 30%, var(--sakura-pink-deep) 0%, #d81b60 60%, var(--elegant-maroon) 100%);  /* ← CHANGE: was "26% 326%" and "80%", needs to be "30% 30%" and "100%" */
+            color: white;
+            border: none;
+            font-size: 0.75em;  /* ← CHANGE: was 0.9em, better at 0.75em for readability */
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 0 10px rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s ease-in;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            font-family: 'Libre Baskerville', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            animation: sealFadeIn 1s ease-out forwards;
+            animation-delay: 2.5s;
+            /* Wax drips effect */
+            clip-path: polygon(
+                50% 0%, 
+                80% 10%, 
+                100% 30%, 
+                90% 60%, 
+                100% 80%, 
+                70% 100%, 
+                30% 95%, 
+                0% 85%, 
+                10% 50%, 
+                0% 20%, 
+                20% 0%
+            );
+        }
+        
+        /* ← ADD THIS: Missing ::before pseudo-element for depth effect */
+        #revealButton::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, transparent 50%, rgba(0,0,0,0.2) 100%);
+        }
+        
+        #revealButton::after {
+            content: 'C & C';
+            position: absolute;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: rgba(255,255,255,0.7);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);  /* ← REMOVE: delete ", inset 0 0 5px rgba(0,0,0,0.3)" - inset is invalid here */
+            mix-blend-mode: overlay;
+            z-index: 4;
+            pointer-events: none;
+        }
+        
+        #revealButton:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4), inset 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* ← ADD THIS: Missing :active state for click feedback */
+        #revealButton:active {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        @keyframes sealFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+        }
+        
+        /* --- MAIN INVITATION HEADER STYLES --- */
+
+        .header {
+            background: linear-gradient(135deg, var(--sakura-pink-medium) 0%, var(--sakura-pink-deep) 100%);
+            padding: 50px 30px;
+            text-align: center;
+        }
+
+        /* .header-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        } */
+        
+        .header-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        /* 'cover' ensures the image fills the circle */
+        object-fit: cover;
+        /* 'center' keeps the middle of our new image (faces + ring) in focus */
+        object-position: center; 
+        border: 5px solid white;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        display: inline-block;
+        }
+
+        .header .solemnization-names {
+            font-family: 'Alex Brush', cursive; 
+            font-size: 2em;
+            color: white; 
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4); 
+            line-height: 1.2;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.8em; 
+            color: white; 
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.4); 
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        /* Form Container Styling */
+        #formSection {
+            background-color: var(--sakura-pink-light);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.1), 
+                0 1px 3px rgba(0, 0, 0, 0.08), 
+                inset 0 1px 3px rgba(255, 255, 255, 0.5), 
+                inset 0 -1px 3px rgba(0, 0, 0, 0.1); 
+        }
+        
+        .event-details {
+            background: #ffffff;
+            border-left: 5px solid var(--sakura-pink-deep);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            font-family: 'Libre Baskerville', serif; 
+            font-size: 1.1em;
+            line-height: 1.8;
+            font-style: italic; 
+        }
+
+        .event-details h2 {
+            color: var(--sakura-pink-deep); 
+            font-family: 'Playfair Display', serif;
+            font-style: normal;
+        }
+
+        .detail-item {
+            margin: 10px 0;
+            padding-left: 0;
+            display: block;
+        }
+
+        .detail-item strong {
+            color: #555;
+            font-style: normal; 
+            font-weight: 700;
+            display: inline-block;
+            width: auto;
+            margin-right: 5px;
+        }
+        
+        .detail-item span {
+            color: #333;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        /* --- FORM STYLES --- */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--sakura-pink-medium);
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: 'Libre Baskerville', serif;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--sakura-pink-deep);
+            box-shadow: 0 0 0 3px var(--sakura-pink-medium);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            flex-grow: 1;
+        }
+
+        .radio-option input[type="radio"] {
+            width: auto;
+            margin-right: 8px;
+            accent-color: var(--sakura-pink-deep);
+        }
+        
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--sakura-pink-deep) 0%, #ec407a 100%);
+            color: white;
+            font-family: 'Libre Baskerville', serif;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.4);
+        }
+
+        /* --- FINAL PAGE (COUNTDOWN) STYLES --- */
+        
+        .countdown-section {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .final-celebration-photo {
+            width: 250px; /* Adjust this to control how large the portrait is */
+            height: auto;
+            border-radius: 15px; /* Softer corners than the circle */
+            border: 5px solid white; /* Matches your header image style */
+            display: block;
+            margin: 30px auto; /* Centered, with space above and below */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Soft shadow for depth */
+            animation: fadeInPhoto 2s ease-in;
+        }
+        
+        /* Add a new, soft animation for this photo */
+        @keyframes fadeInPhoto {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .thank-you-message {
+            background: linear-gradient(135deg, var(--sakura-pink-light) 0%, #ffe0f0 100%);
+            color: #4a4a4a;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-family: 'Libre Baskerville', serif;
+        }
+
+        .thank-you-message h2 {
+             font-family: 'Playfair Display', serif; 
+             color: var(--sakura-pink-deep);
+        }
+
+        .hearts-decoration {
+            color: var(--sakura-pink-deep);
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        .countdown-title {
+            font-family: 'Alex Brush', cursive; 
+            color: var(--sakura-pink-deep);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .countdown-timer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .time-unit {
+            background: #ffffff;
+            border: 1px solid var(--sakura-pink-light);
+            border-radius: 8px;
+            padding: 15px 5px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+        }
+
+        .time-number {
+            display: block;
+            font-family: 'Playfair Display', serif; 
+            color: var(--sakura-pink-deep);
+            font-size: 2em;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .time-label {
+            display: block;
+            font-size: 0.8em;
+            color: #777;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .event-reminder {
+            text-align: left;
+            padding: 20px;
+            border-left: 4px solid var(--sakura-pink-deep);
+            background-color: #f7f7f7;
+            border-radius: 5px;
+        }
+
+        .event-reminder h3 {
+            color: var(--sakura-pink-deep);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 480px) {
+            .countdown-timer {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="landingPage">
+            <div class="letter-container">
+                <h2>A Special Delivery</h2>
+            </div>
+            <button id="revealButton">Open to Reveal</button>
+        </div>
+
+        <div class="header" style="display:none;">
+            <!-- <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=400" alt="Event" class="header-image"> -->
+            <img src="https://github.com/OolongTeh/RSVP_Invitation_v2/blob/main/Gemini_Generated_Image_f3wnvcf3wnvcf3wn.png?raw=true" alt="Carrie & Chun Wei" class="header-image">
+            
+            <p class="solemnization-names">Solemnization for Carrie & Chun Wei</p> 
+            
+            <h1>You're Invited to share this special day with us!</h1>
+        </div>
+        
+        <div class="content" style="opacity: 0; transition: opacity 1.5s ease-in;">
+            <div id="formSection" style="display:none;">
+                <div class="event-details">
+                    <h2>Event Details</h2>
+                    <div class="detail-item">
+                        <strong>🗓️ Date:</strong> 
+                        <span>20 May 2026</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>🕒 Time:</strong>
+                        <span>16:00 - 17:00</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>📍 Venue:</strong>
+                        <span>Ficus Room @ Gardens by the Bay</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>👔 Dress Code:</strong>
+                        <span> Formal/ Smart Casual/ Dress </span>
+                    </div>
+                </div>
+
+                <form id="rsvpForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Will you be attending? *</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="attending" value="yes" required>
+                                <span>Yes, I'll be there!</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="attending" value="no" required>
+                                <span>Sorry, can't make it</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guests">Number of Guests (including yourself) *</label>
+                        <select id="guests" name="guests" required>
+                            <option value="">Select...</option>
+                            <option value="0">Cannot make it :(</option>
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                        </select>
+                    </div>
+
+                    <div class="detail-item" style="margin: 20px 0; font-family: 'Libre Baskerville', serif; font-style: normal; line-height: 1.5;">
+                        <strong>For Your Information: </strong>
+                        <a href="https://www.marriage.gov.sg/ROM_solemnisation_day_at_GBTB.pdf" target="_blank" style="color: var(--sakura-pink-deep); text-decoration: underline;"> Please Read HERE before submission </a>
+                    </div>
+
+                    <button type="submit">Submit RSVP</button>
+                </form>
+            </div>
+
+            <div id="countdownSection" class="countdown-section" style="display: none;">
+                <div class="thank-you-message">
+                    <h2>Thank You! </h2>
+                    <p>We've received your RSVP and can't wait to share this day with you!</p>
+                    <img src="https://github.com/OolongTeh/RSVP_Invitation_v2/blob/main/Image%20(4).jpg?raw=true" alt="Carrie and Chun Wei" class="final-celebration-photo">
+                </div>
+
+                <div class="hearts-decoration">♥ ♥ ♥</div>
+
+                <h3 class="countdown-title">Counting down to our special day</h3>
+
+                <div class="countdown-timer">
+                    <div class="time-unit">
+                        <span class="time-number" id="days">00</span>
+                        <span class="time-label">Days</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="hours">00</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="minutes">00</span>
+                        <span class="time-label">Minutes</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="seconds">00</span>
+                        <span class="time-label">Seconds</span>
+                    </div>
+                </div>
+
+                <div class="event-reminder">
+                    <h3>📅 Save the Date!!</h3>
+                    <p><strong>Wednesday, 20 May 2026</strong><br>
+                    4:00 PM - 5:00 PM<br>
+                    Ficus Room, Gardens by the Bay</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('rsvpForm');
+        const formSection = document.getElementById('formSection');
+        const countdownSection = document.getElementById('countdownSection');
+        const landingPage = document.getElementById('landingPage');
+        const letterContainer = document.querySelector('.letter-container');
+        const header = document.querySelector('.header');
+        const content = document.querySelector('.content');
+        const revealButton = document.getElementById('revealButton');
+
+        // IMPORTANT: Update this URL with your actual Google Apps Script URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQXlnY9IlcBq9dZdot5YwV5vm_L8p_H-PGuw7VGANPIA_SDv1WKG-IpbX7NiwWF-n0/exec';
+
+        // Countdown target date: May 20, 2026, 16:00
+        const targetDate = new Date('2026-05-20T16:00:00').getTime();
+
+        // Event listener for the reveal button (Wax Seal)
+        revealButton.addEventListener('click', () => {
+            letterContainer.classList.add('animate-open');
+            revealButton.style.opacity = 0;
+
+            setTimeout(() => {
+                landingPage.style.display = 'none'; 
+                header.style.display = 'block';
+                formSection.style.display = 'block';
+                content.style.opacity = 1;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 800); 
+        });
+
+        // Function to update the countdown timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                // When the date is passed, set to 00
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        // Form Submission Logic
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.textContent = 'Submitting...';
+            submitButton.disabled = true;
+            
+            const formData = new FormData(form);
+            
+            const params = new URLSearchParams();
+            params.append('name', formData.get('name'));
+            params.append('email', formData.get('email'));
+            params.append('phone', formData.get('phone') || '');
+            params.append('attending', formData.get('attending'));
+            params.append('guests', formData.get('guests'));
+            
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                body: params
+            })
+            .then(response => {
+                // FIX: Hide form and header simultaneously
+                header.style.display = 'none';
+                formSection.style.display = 'none';
+                
+                // FIX: Show countdown section
+                countdownSection.style.display = 'block';
+                
+                // Start countdown timer and set interval
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your RSVP. Please try again.');
+                submitButton.textContent = 'Submit RSVP';
+                submitButton.disabled = false;
+            });
+        });
+        
+        // Create floating petals
+        function createPetals() {
+            const container = document.body; // Add petals directly to body since you don't have a petalsContainer
+            const petalCount = 36;
+            
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDuration = (Math.random() * 18 + 18) + 's';
+                petal.style.animationDelay = Math.random() * 3 + 's';
+                petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+                container.appendChild(petal);
+            }
+        }
+
+        // Initialize petals on load
+        window.addEventListener('load', createPetals);
+        
+    </script>
+</body>
+</html>
